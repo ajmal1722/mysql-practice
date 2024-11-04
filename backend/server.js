@@ -1,5 +1,6 @@
-import express from 'express';
+import express, { urlencoded } from 'express';
 import dotenv from 'dotenv';
+import morgan from 'morgan';
 import taskRoutes from './routers/taskRouter.js';
 
 dotenv.config();
@@ -9,6 +10,9 @@ const app = express();
 
 // Middleware to parse JSON requests
 app.use(express.json());
+app.use(urlencoded({ extended: false }))
+
+app.use(morgan('tiny'))
 
 // Task routes
 app.use('/api/tasks', taskRoutes);
