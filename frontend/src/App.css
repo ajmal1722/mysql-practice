@@ -1,3 +1,9 @@
+.kaushan-script-regular {
+    font-family: "Kaushan Script", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 .background-div {
     background-image: url('https://png.pngtree.com/background/20230426/original/pngtree-fashion-store-interior-of-a-men-s-clothing-store-picture-image_2490200.jpg');
     background-size: cover;  /* Ensures the image covers the whole div */
@@ -5,3 +11,4 @@
     background-repeat: no-repeat; /* Prevents the image from repeating */
     min-height: 100vh; /* Sets minimum height to viewport height */
 }
+

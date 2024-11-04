@@ -17,7 +17,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
-      <div className="text-3xl font-semibold font-mono">
+      <div className="text-5xl font-semibold font-mono">
         wardrobe
       </div>
       <div className="text-2xl">

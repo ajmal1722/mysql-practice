@@ -10,7 +10,7 @@ function App() {
     <>
       <div className='background-div text-white'>
         <Header />
-        {/* <Hero /> */}
+        <Hero />
       </div>
       
     </>
