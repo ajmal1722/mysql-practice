@@ -17,7 +17,7 @@ const ProductCard = () => {
                 </p>
                 <div className="flex justify-between items-center">
                     <span className="text-xl font-bold text-green-600">$49.99</span>
-                    <button className="flex items-center gap-2 px-4 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-colors">
+                    <button className="flex items-center gap-2 px-4 py-2 bg-yellow-600 text-white rounded-full hover:bg-yellow-700 transition-colors">
                         Add to Cart 
                         <FaCartShopping />
                     </button>
