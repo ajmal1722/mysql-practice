@@ -6,6 +6,7 @@ import Hero from './components/Hero';
 import ProductListing from './components/ProductListing';
 import Model from './components/Model';
 import HomePage from './pages/HomePage';
+import AdminPage from './pages/AdminPage';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -14,6 +15,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage />} />
+        <Route path='/admin' element={<AdminPage />} />
       </Routes>
     </BrowserRouter>
   )
