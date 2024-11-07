@@ -1,6 +1,7 @@
 import express, { urlencoded } from 'express';
 import dotenv from 'dotenv';
 import morgan from 'morgan';
+import cors from 'cors';
 import taskRoutes from './routers/taskRouter.js';
 import productRoutes from './routers/productRouter.js';
 
@@ -13,7 +14,11 @@ const app = express();
 app.use(express.json());
 app.use(urlencoded({ extended: false }))
 
-app.use(morgan('tiny'))
+// Morgan middleware
+app.use(morgan('tiny'));
+
+// Cors middleware
+app.use(cors({ origin: 'http://localhost:5173/' }))
 
 // Task routes
 app.use('/api/tasks', taskRoutes);

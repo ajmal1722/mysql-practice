@@ -17,18 +17,38 @@ const Form = ({ handleToggle }) => {
         }));
     };
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(formData)
-
-        setFormData({
-            title: '',
-            image: '',
-            description: '',
-            price: ''
-        })
-    }
-
+        console.log(formData);
+    
+        try {
+            const response = await fetch('http://localhost:8000/api/product', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+            console.log(response)
+    
+            // if (response.ok) {
+            //     console.log("Product added successfully");
+    
+            //     // Clear the form after successful submission
+            //     setFormData({
+            //         title: '',
+            //         image: '',
+            //         description: '',
+            //         price: ''
+            //     });
+            // } else {
+            //     console.error("Failed to add product", response);
+            // }
+        } catch (error) {
+            console.error("Error:", error);
+        }
+    };
+    
     return (
         <div className="w-1/2 mx-auto my-20 border p-5">
             <div className="flex justify-end my-5" onClick={handleToggle}>
