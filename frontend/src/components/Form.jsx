@@ -1,35 +1,87 @@
-import { useState } from "react"
+import { useState } from "react";
+import { TiArrowBackOutline } from "react-icons/ti";
 
-const Form = () => {
-    const [showForm, setShowForm] = useState(true)
+const Form = ({ handleToggle }) => {
     const [formData, setFormData] = useState({
-        image: '',
         title: '',
+        image: '',
         description: '',
         price: ''
     })
 
-    const handleToggle = () => {
-        setShowForm(prev => !prev)
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        console.log(formData)
+
+        setFormData({
+            title: '',
+            image: '',
+            description: '',
+            price: ''
+        })
     }
 
     return (
-        <>
-            {showForm ? (
-                <div className="flex justify-center my-16">
-                    <button 
-                        onClick={handleToggle}
-                        className="bg-green-500 hover:bg-green-600 px-5 p-2 rounded-md"
-                    >
-                        Add product
-                    </button>
+        <div className="w-1/2 mx-auto my-20 border p-5">
+            <div className="flex justify-end my-5" onClick={handleToggle}>
+                <TiArrowBackOutline className="text-2xl cursor-pointer text-gray-700 hover:text-gray-950 hover:scale-105" />
+            </div>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold mb-2">Title</label>
+                    <input
+                        type="text"
+                        name="title"
+                        value={formData.title}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                 </div>
-            ) : (
-                <div>
-                    fomr
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold mb-2">Description</label>
+                    <textarea 
+                        name="description"
+                        value={formData.description}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
                 </div>
-            )}
-        </>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold mb-2">Price</label>
+                    <input 
+                        type="number" 
+                        name="price"
+                        value={formData.price}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label className="block text-gray-700 font-semibold mb-2">Image URL</label>
+                    <input 
+                        type="text" 
+                        name="image"
+                        value={formData.image}
+                        onChange={handleChange}
+                        className="w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
+                <button 
+                    type="submit" 
+                    className="w-full p-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-200"
+                >
+                    Submit
+                </button>
+            </form>
+        </div>
     )
 }
 

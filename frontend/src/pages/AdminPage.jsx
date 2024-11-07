@@ -1,9 +1,9 @@
-import Form from "../components/Form"
+import AdminHome from "../components/AdminHome"
 
 const AdminPage = () => {
     return (
         <>
-            <Form />
+            <AdminHome />
         </>
     )
 }
