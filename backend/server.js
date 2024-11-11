@@ -17,8 +17,15 @@ app.use(urlencoded({ extended: false }));
 // Morgan middleware
 app.use(morgan('tiny'));
 
+// CORS options to allow requests from specific origin
+const corsOptions = {
+    origin: 'http://localhost:5173', // Allow requests from this frontend domain
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE', // Allowed HTTP methods
+    credentials: true, // Include cookies in requests
+};
+
 // Cors middleware
-app.use(cors({ origin: 'http://localhost:5173/' }))
+app.use(cors(corsOptions))
 
 // Task routes
 app.use('/api/tasks', taskRoutes);

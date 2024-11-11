@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { createPostApi } from "../utils/api/productApi";
 
 const Form = ({ handleToggle }) => {
     const [formData, setFormData] = useState({
@@ -22,13 +23,7 @@ const Form = ({ handleToggle }) => {
         console.log(formData);
     
         try {
-            const response = await fetch('http://localhost:8000/api/product', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
+            const response = await createPostApi(formData)
             console.log(response)
     
             // if (response.ok) {
