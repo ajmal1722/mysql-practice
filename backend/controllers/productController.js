@@ -2,6 +2,7 @@ import pool from "../connection/db.js";
 
 const createProduct = async (req, res) => {
     try {
+        console.log('req. is received')
         const { title, description, price, image } = req.body;
         console.log(req.body);
 

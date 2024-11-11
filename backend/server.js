@@ -12,7 +12,7 @@ const app = express();
 
 // Middleware to parse JSON requests
 app.use(express.json());
-app.use(urlencoded({ extended: false }))
+app.use(urlencoded({ extended: false }));
 
 // Morgan middleware
 app.use(morgan('tiny'));
