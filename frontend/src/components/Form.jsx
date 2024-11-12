@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { TiArrowBackOutline } from "react-icons/ti";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { createPostApi } from "../utils/api/productApi";
 
 const Form = ({ handleToggle }) => {
@@ -26,7 +28,20 @@ const Form = ({ handleToggle }) => {
             const response = await createPostApi(formData)
             console.log(response)
     
-            
+            if (response) {
+                toast.success("Product added successfully");
+    
+                // Clear the form after successful submission
+                setFormData({
+                    title: '',
+                    image: '',
+                    description: '',
+                    price: ''
+                });
+            } else {
+                console.error("Failed to add product", response);
+                toast.error("Failed to add product");
+            }
         } catch (error) {
             console.error("Error:", error);
         }
@@ -34,6 +49,7 @@ const Form = ({ handleToggle }) => {
     
     return (
         <div className="w-1/2 mx-auto my-20 border p-5">
+            <ToastContainer />
             <div className="flex justify-end my-5" onClick={handleToggle}>
                 <TiArrowBackOutline className="text-2xl cursor-pointer text-gray-700 hover:text-gray-950 hover:scale-105" />
             </div>
