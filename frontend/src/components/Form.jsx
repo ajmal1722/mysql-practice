@@ -26,19 +26,7 @@ const Form = ({ handleToggle }) => {
             const response = await createPostApi(formData)
             console.log(response)
     
-            // if (response.ok) {
-            //     console.log("Product added successfully");
-    
-            //     // Clear the form after successful submission
-            //     setFormData({
-            //         title: '',
-            //         image: '',
-            //         description: '',
-            //         price: ''
-            //     });
-            // } else {
-            //     console.error("Failed to add product", response);
-            // }
+            
         } catch (error) {
             console.error("Error:", error);
         }
