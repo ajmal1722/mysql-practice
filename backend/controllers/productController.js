@@ -31,7 +31,26 @@ const createProduct = async (req, res) => {
     }
 };
 
+const getSingleProduct = async (req, res) => {
+    try {
+        const id = req.params.id;
+
+        const [product] = await pool.query('SELECT * FROM PRODUCTS WHERE id = ?', [id]);
+
+        // Check if the product exists
+        if (product.length === 0) {
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        res.json(product[0]);
+    } catch (error) {
+        console.error("Error creating product:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 export {
     getProducts,
     createProduct,
+    getSingleProduct
 }
