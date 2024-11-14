@@ -1,5 +1,15 @@
 import pool from "../connection/db.js";
 
+const getProducts = async (req, res) => {
+    try {
+        const [result] = await pool.query('SELECT * FROM PRODUCTS');
+        res.status(200).json(result);
+    } catch (error) {
+        console.error("Error fetching products:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+
 const createProduct = async (req, res) => {
     try {
         const { title, description, price, image } = req.body;
@@ -22,5 +32,6 @@ const createProduct = async (req, res) => {
 };
 
 export {
+    getProducts,
     createProduct,
 }
